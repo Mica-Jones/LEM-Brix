@@ -1,0 +1,79 @@
+---
+title: "Wrangling Workflow"
+format: html
+---
+
+## Setup and Import
+
+```{r Setup}
+# Loading packages
+library(tidyverse) # for data wrangling and plotting
+library(car) # for Anova function
+library(lme4)
+library(broom) # for model residuals extraction
+library(emmeans) # for model mean extraction
+library(multcomp) # for pairwise comparison letter display
+```
+
+```{r Import Data}
+yielddat <- read_csv("../data/FSYield-2023-raw.csv")
+
+yielddat
+```
+```{r Summary of Raw}
+summary(yielddat)
+```
+```{r Initial Wrangling}
+yielddatw <- yielddat %>%
+  mutate(rep = factor(rep),
+         plantnum = factor(plantnum) 
+         ) %>%
+mutate(trtname = paste0(trt,variety)) %>% 
+  arrange(trtname) %>%
+  group_by(trtname) %>%
+  mutate(cummyield = cumsum(mk_kg)) %>%
+  mutate(cummnum = cumsum(mk_num))
+
+yielddatw
+```
+## Exploratory Charts
+
+```{r Cumulative Marketable Yield Kg}
+ggplot(yielddatw, aes(x = trt, 
+                    y = cummyield,
+                    color = variety)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_grid(.~date) # tilde controls what axis the facets are laid out on; krate_kgha~. would transpose; nrate_kgha~krate_kgha would create a different facet for each treatment category
+  theme(legend.position = "none") +
+    theme
+```
+```{r Cumulative Marketable Fruit Number}
+ggplot(yielddatw, aes(x = trtname, 
+                    y = cummnum,
+                    color = trtname)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_grid(.~date) # tilde controls what axis the facets are laid out on; krate_kgha~. would transpose; nrate_kgha~krate_kgha would create a different facet for each treatment category
+  theme(legend.position = "none")
+```
+
+```{r Model Fitting}
+options(contrasts = c("contr.sum", "contr.poly"))
+yielddatw
+
+# Model fitting
+yielddatw_mod <- lm(cummyield ~ rep + trt*variety, # rep + is functionally the only coding difference between a CRD and a RCBD design)
+               data = yielddatw)
+yielddatw_mod
+
+# Summary
+summary(yielddatw_mod)
+```
+
+im here too
+```{r ANOVA}
+Anova(yielddatw_mod, type=3)
+
+```
+

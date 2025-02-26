@@ -1,0 +1,210 @@
+---
+title: "2024-bean-brix-data"
+format: html
+---
+
+# Setup
+```{r Packages}
+library(tidyverse) # for data wrangling and plotting
+library(car) # for Anova function
+library(lme4)
+library(broom) # for model residuals extraction
+library(emmeans) # for model mean extraction
+library(multcomp) # for pairwise comparison letter display
+library(multcompView)
+```
+# Import Data
+```{r}
+beanbrix <- read.csv("../LEM Data Stuff/data/beanbrix.csv")
+
+beanbrix
+```
+# EDA tables  
+```{r summary}
+summary(beanbrix)
+```
+
+```{r glimpse}
+glimpse(beanbrix)
+```
+# Wrangling
+```{r beanbrixw}
+beanbrixw <- beanbrix %>%
+  mutate(rep = factor(rep),
+         lem = factor(lem) 
+         ) %>% 
+  mutate(trtname = paste0(lem, "+", wincrop))
+
+beanbrixw
+
+summary(rcbd_dfw)
+
+```
+
+# EDA plots  
+```{r winter crop boxplot}
+ggplot(beanbrixw, aes(x = wincrop, 
+                    y = avg,
+                    color = wincrop)) +
+  geom_boxplot() +
+  geom_jitter() +
+  theme(legend.position = "none")
+```
+
+```{r lem rate boxplot}
+ggplot(beanbrixw, aes(x = lem, 
+                    y = avg,
+                    color = lem)) +
+  geom_boxplot() +
+  geom_jitter() +
+  theme(legend.position = "none")
+```
+```{r nk boxplot}
+ggplot(beanbrixw, aes(x = lem, 
+                    y = avg,
+                    color = lem)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_grid(.~wincrop) +
+  theme(legend.position = "none")
+```
+# Statistical Modeling
+
+```{r model}
+# Changing to sum-to-zero contrast
+options(contrasts = c("contr.sum", "contr.poly"))
+beanbrixw
+
+# Model fitting
+beanbrix_mod <- lm(avg ~ rep + lem*wincrop, # rep + is functionally the only coding difference between a CRD and a RCBD design)
+               data = beanbrixw)
+beanbrix_mod
+
+# Summary
+summary(beanbrix_mod)
+```
+```{r ANOVA}
+Anova(beanbrix_mod, type = 3)
+```
+# Linear model assumptions  
+## Extracting residuals
+First, let's extract our model residuals, and also create studentized residuals.  
+
+```{r rcbd_resid}
+beanbrix_resid <- augment(beanbrix_mod) %>%
+  mutate(.studresid=rstudent(beanbrix_mod))
+
+beanbrix_resid
+```
+
+## Residual independence  
+- For this, we use the **fitted vs. residual plot**.  
+- What we want to see: no clear pattern in residuals, random cloud of points.  
+- What we do not want to see: clear pattern, for example, quadratic shape.  
+- Adding a `geom_smooth()` helps with that conclusion. We want to see the smooth line and error bands comprising 0 on the y axis.  
+
+```{r independence, homoscedasticity, and outliars}
+ggplot(beanbrix_resid, aes(x=.fitted, y=.studresid))+
+  geom_hline(yintercept = 0, color="red")+
+  geom_point(shape = 21,
+             fill = "purple", 
+             size = 3,
+             alpha = .7)+
+  #geom_smooth()+
+  geom_hline(yintercept = c(-3,3), color = "red")+
+  theme_bw()
+```
+## Residual normality  
+
+```{r qq}
+ggplot(beanbrix_resid, aes(sample=.studresid))+
+  stat_qq(  shape = 21,
+            fill = "purple", 
+            size = 3,
+            alpha = .7
+  )+
+  stat_qq_line()+
+  labs(x = "Theoretical quantile",
+       y = "Sample quantile")+
+  theme_bw()
+```
+
+```{r distribution}
+ggplot(beanbrix_resid, aes(x=.studresid))+
+  geom_density(color = "black",
+               fill = "purple",
+               alpha = .7)+
+  scale_x_continuous(breaks = c(-3,0,3), limits = c(-3,3))+
+  theme_bw()
+
+```
+
+# Model means  
+
+```{r interaction means all}
+beanbrix_means_all <- emmeans(beanbrix_mod,
+                          ~lem:wincrop)
+
+beanbrix_means_all
+```
+# Pairwise comparisons  
+Now that we extracted means, let's perform pairwise comparisons among them.  
+
+```{r interaction pwc all}
+beanbrix_cld_all <- cld(beanbrix_means_all, 
+                   reversed=T, 
+                   adjust="none",
+               Letters=letters,
+               alpha = 0.1)
+
+beanbrix_cld_all
+```
+```{r selected pwc}
+beanbrix_cld_selected <- beanbrix_cld_all %>%
+  as.data.frame() %>%
+  mutate(letter = trimws(.group)) %>% 
+  mutate(trtname = paste0(lem, "+", wincrop))
+  
+
+beanbrix_cld_selected
+```
+# Plot
+```{r}
+# New facet label names for dose variable
+wincrop.labs <- c("Carrot", "Kale", "Crimson Clover")
+names(wincrop.labs) <- c("C", "K", "L")
+```
+
+pp
+```{r rcbd final plot}
+ggplot() +
+  geom_boxplot(data = beanbrixw,
+               aes(x = lem,
+                   y = avg,
+                   fill = lem,
+                   #color = trtname,
+                   )
+               ) +
+geom_jitter(data = beanbrixw,
+            aes(x = lem,
+                y = avg,
+                color = lem),
+            alpha = 0.6) +
+  geom_label(data = beanbrix_cld_selected,
+            aes(x = lem,
+                y = emmean,
+                label = letter),
+            size = 3,
+            label.padding = unit(.1, "lines")) +
+  labs(x = "LEM + Winter Crop",
+       y = "%Brix") +
+  scale_fill_viridis_d() +
+  scale_color_viridis_d() +
+  facet_grid(.~wincrop,
+             labeller = labeller(wincrop = wincrop.labs)) +
+  theme(legend.position = "none")
+```
+
+
+
+hello

@@ -1,0 +1,96 @@
+﻿date,plantnum,trt,rep,varname,variety,plot_name,mk_kg,mk_num,un_kg,un_num
+7/14/2023,8,con,1,Estiva,1,con101,1.5,6,1.85,8
+7/14/2023,8,con,1,Tomimaru Muchoo,2,con102,1.5,7,1.85,9
+7/14/2023,8,con,2,Estiva,1,con201,1.1,5,0.9,4
+7/14/2023,8,con,2,Tomimaru Muchoo,2,con202,0.7,4,2.3,12
+7/14/2023,8,con,3,Estiva,1,con301,0.85,4,0.2,1
+7/14/2023,8,con,3,Tomimaru Muchoo,2,con302,1.05,6,1.75,8
+7/14/2023,8,con,4,Estiva,1,con401,0.85,4,0.7,5
+7/14/2023,8,con,4,Tomimaru Muchoo,2,con402,0.45,2,0.55,2
+7/14/2023,8,ht,1,Estiva,1,ht101,2.7,12,0.45,5
+7/14/2023,7,ht,1,Tomimaru Muchoo,2,ht102,4.3,20,0.4,2
+7/14/2023,8,ht,2,Estiva,1,ht201,3.1,16,0,0
+7/14/2023,8,ht,2,Tomimaru Muchoo,2,ht202,2.7,15,0.5,2
+7/14/2023,8,ht,3,Estiva,1,ht301,4.1,22,0.2,2
+7/14/2023,8,ht,3,Tomimaru Muchoo,2,ht302,7.4,36,0.05,1
+7/14/2023,7,ht,4,Estiva,1,ht401,3.85,21,0.3,3
+7/14/2023,8,ht,4,Tomimaru Muchoo,2,ht402,3.5,18,1.85,8
+7/14/2023,8,org,1,Estiva,1,org101,1.9,8,1.05,5
+7/14/2023,8,org,1,Tomimaru Muchoo,2,org102,1.8,10,3.45,21
+7/14/2023,8,org,2,Estiva,1,org201,0.85,4,1.8,11
+7/14/2023,8,org,2,Tomimaru Muchoo,2,org202,2.4,13,1.35,8
+7/14/2023,8,org,3,Estiva,1,org301,0.6,3,2.95,14
+7/14/2023,8,org,3,Tomimaru Muchoo,2,org302,0.85,5,1.75,11
+7/14/2023,8,org,4,Estiva,1,org401,0,0,1.3,9
+7/14/2023,10,org,4,Tomimaru Muchoo,2,org402,0.7,3,3.3,19
+7/21/2023,,con,1,Estiva,1,con101,5.95,29,0.6,4
+7/21/2023,,con,1,Tomimaru Muchoo,2,con102,5.45,20,3.6,11
+7/21/2023,,con,2,Estiva,1,con201,3.75,15,1.45,6
+7/21/2023,,con,2,Tomimaru Muchoo,2,con202,5.45,24,4.2,14
+7/21/2023,,con,3,Estiva,1,con301,3.7,14,0.5,2
+7/21/2023,,con,3,Tomimaru Muchoo,2,con302,3.3,14,2.1,10
+7/21/2023,,con,4,Estiva,1,con401,3.3,13,1.7,6
+7/21/2023,,con,4,Tomimaru Muchoo,2,con402,4.1,15,0.45,3
+7/21/2023,,ht,1,Estiva,1,ht101,5.1,24,3.35,20
+7/21/2023,,ht,1,Tomimaru Muchoo,2,ht102,7.8,35,0.4,2
+7/21/2023,,ht,2,Estiva,1,ht201,13.1,72,0.7,7
+7/21/2023,,ht,2,Tomimaru Muchoo,2,ht202,9.9,51,0.35,2
+7/21/2023,,ht,3,Estiva,1,ht301,6.4,29,0.7,6
+7/21/2023,,ht,3,Tomimaru Muchoo,2,ht302,8.45,43,1.4,14
+7/21/2023,,ht,4,Estiva,1,ht401,5.5,31,1.5,14
+7/21/2023,,ht,4,Tomimaru Muchoo,2,ht402,6.2,32,1.7,9
+7/21/2023,,org,1,Estiva,1,org101,2.2,9,4.5,24
+7/21/2023,,org,1,Tomimaru Muchoo,2,org102,3.1,16,4.3,41
+7/21/2023,,org,2,Estiva,1,org201,3.85,19,2.05,15
+7/21/2023,,org,2,Tomimaru Muchoo,2,org202,3.55,21,0.8,5
+7/21/2023,,org,3,Estiva,1,org301,3.4,15,1.9,14
+7/21/2023,,org,3,Tomimaru Muchoo,2,org302,1.45,7,2.95,26
+7/21/2023,,org,4,Estiva,1,org401,3.75,16,2.55,17
+7/21/2023,,org,4,Tomimaru Muchoo,2,org402,3.9,19,4.3,28
+7/26/2023,,con,1,Estiva,1,con101,17.6,80,1.4,9
+7/26/2023,,con,1,Tomimaru Muchoo,2,con102,14.55,70,8.85,50
+7/26/2023,,con,2,Estiva,1,con201,15,66,3.15,13
+7/26/2023,,con,2,Tomimaru Muchoo,2,con202,24.5,106,5.95,26
+7/26/2023,,con,3,Estiva,1,con301,12.05,49,2.15,9
+7/26/2023,,con,3,Tomimaru Muchoo,2,con302,16.55,69,6.1,31
+7/26/2023,,con,4,Estiva,1,con401,8.75,38,8.4,41
+7/26/2023,,con,4,Tomimaru Muchoo,2,con402,18.95,77,2.05,8
+7/26/2023,,ht,1,Estiva,1,ht101,15.8,82,5.95,33
+7/26/2023,,ht,1,Tomimaru Muchoo,2,ht102,18.9,92,1.75,8
+7/26/2023,,ht,2,Estiva,1,ht201,11.95,76,1.35,15
+7/26/2023,,ht,2,Tomimaru Muchoo,2,ht202,14.35,85,0.7,4
+7/26/2023,,ht,3,Estiva,1,ht301,17.65,95,2.1,32
+7/26/2023,,ht,3,Tomimaru Muchoo,2,ht302,19.35,113,1.9,17
+7/26/2023,,ht,4,Estiva,1,ht401,16.25,93,3.75,38
+7/26/2023,,ht,4,Tomimaru Muchoo,2,ht402,13.5,73,3.05,20
+7/26/2023,,org,1,Estiva,1,org101,8.8,49,2.9,19
+7/26/2023,,org,1,Tomimaru Muchoo,2,org102,13.55,69,7.25,38
+7/26/2023,,org,2,Estiva,1,org201,9.25,54,3.2,26
+7/26/2023,,org,2,Tomimaru Muchoo,2,org202,10.75,65,2.1,15
+7/26/2023,,org,3,Estiva,1,org301,10.85,69,3.3,24
+7/26/2023,,org,3,Tomimaru Muchoo,2,org302,8.1,53,2.3,21
+7/26/2023,,org,4,Estiva,1,org401,8.9,51,3.05,26
+7/26/2023,,org,4,Tomimaru Muchoo,2,org402,12.7,69,7.95,46
+8/3/2023,,con,1,Estiva,1,con101,21.05,133,8.9,88
+8/3/2023,,con,1,Tomimaru Muchoo,2,con102,11.3,80,10.15,113
+8/3/2023,,con,2,Estiva,1,con201,31.8,171,14.45,77
+8/3/2023,,con,2,Tomimaru Muchoo,2,con202,27.1,146,5.35,32
+8/3/2023,,con,3,Estiva,1,con301,32.3,182,12.95,74
+8/3/2023,,con,4,Estiva,1,con401,11.15,66,15.65,108
+8/3/2023,,con,4,Tomimaru Muchoo,2,con402,21.35,133,18.65,120
+8/3/2023,,ht,1,Estiva,1,ht101,25.5,166,7.85,64
+8/3/2023,,ht,1,Tomimaru Muchoo,2,ht102,22.25,162,1.3,9
+8/3/2023,,ht,2,Estiva,1,ht201,15.7,137,2.4,28
+8/3/2023,,ht,2,Tomimaru Muchoo,2,ht202,21.85,179,1.75,16
+8/3/2023,,ht,3,Estiva,1,ht301,24.95,178,6.2,68
+8/3/2023,,ht,3,Tomimaru Muchoo,2,ht302,21.9,178,2.5,20
+8/3/2023,,ht,4,Estiva,1,ht401,11.6,108,4.25,51
+8/3/2023,,ht,4,Tomimaru Muchoo,2,ht402,22.2,187,1.55,17
+8/3/2023,,org,1,Estiva,1,org101,13.45,97,5,38
+8/3/2023,,org,1,Tomimaru Muchoo,2,org102,5.55,40,4.75,34
+8/3/2023,,org,2,Estiva,1,org201,14.6,123,3.5,31
+8/3/2023,,org,2,Tomimaru Muchoo,2,org202,13.8,141,2.9,32
+8/3/2023,,org,3,Estiva,1,org301,15.15,117,6.45,60
+8/3/2023,,org,3,Tomimaru Muchoo,2,org302,11.3,113,5.3,56
+8/3/2023,,org,4,Estiva,1,org401,9.7,85,10.35,93
+8/3/2023,,org,4,Tomimaru Muchoo,2,org402,18.85,139,15.45,127

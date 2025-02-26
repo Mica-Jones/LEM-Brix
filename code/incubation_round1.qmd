@@ -86,13 +86,17 @@ ggplot(tno3w, aes(x = location,
 ```
 
 ```{r nk boxplot}
-ggplot(tno3w, aes(x = rate, 
+ggplot(tno3w, aes(x = day, 
                     y = tinmgkg,
-                    color = day)) +
+                    color = rate)) +
   geom_boxplot() +
   geom_jitter() +
   facet_grid(location~lem) # tilde controls what axis the facets are laid out on; krate_kgha~. would transpose; nrate_kgha~krate_kgha would create a different facet for each treatment category
   theme(legend.position = "none")
+  
+    ggsave("../output/incubationno31.png",
+       width = 8,
+       height = 5)
 ```
 
 # e) Statistical model  
